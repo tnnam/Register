@@ -16,6 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+    
+        let navigationController = application.windows[0].rootViewController as! UINavigationController
+        
+        if (UserDefaults.standard.string(forKey: "cityName") != nil) && (UserDefaults.standard.string(forKey: "districtName") != nil) && (UserDefaults.standard.string(forKey: "chooseAge") != nil) && (UserDefaults.standard.string(forKey: "gender") != nil) {
+            
+            let confirmStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let showConfirmVC = confirmStoryBoard.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
+            
+            navigationController.pushViewController(showConfirmVC, animated: true)
+        }
+        
         return true
     }
 
